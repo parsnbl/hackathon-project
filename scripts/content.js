@@ -3,6 +3,13 @@ let ANIMAL = 'cat';
 chrome.storage.local.get('ANIMAL', result => {
   if (result.ANIMAL) {
     ANIMAL = result.ANIMAL;
+
+    const icon =
+      ANIMAL === 'cat'
+        ? '../assets/catemoj-16.png'
+        : '../assets/dogemoj-16.png';
+    chrome.action.setIcon({ path: icon });
+    console.log(icon);
   }
 });
 
@@ -41,6 +48,12 @@ function makeErrorPage(code) {
   body.style.maxHeight = 'none';
   body.style.padding = '0px';
   body.style.height = '100vh';
+
+  const audio = document.createElement('audio');
+  audio.setAttribute('src', 'cat_sound.wav');
+  audio.setAttribute('autoplay', 'true');
+  audio.setAttribute('loop', 'true');
+  body.append(audio);
 
   return body;
 }

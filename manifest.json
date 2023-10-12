@@ -8,7 +8,8 @@
     "webRequest",
     "webNavigation",
     "scripting",
-    "storage"
+    "storage",
+    "browserAction"
   ],
   "background": { "service_worker": "scripts/background.js" },
   "content_scripts": [
@@ -21,6 +22,18 @@
   "host_permissions": ["https://*/*", "http://*/*"],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Dogs & Cats"
-  }
+    "default_title": "Dogs & Cats",
+    "default_icon": {
+      "16": "assets/catemoj-16.png",
+      "32": "assets/catemoj-32.png",
+      "48": "assets/catemoj-48.png",
+      "128": "assets/catemoj-128.png"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["cat_sound.wav"],
+      "matches": ["https://*/*", "http://*/*"]
+    }
+  ]
 }

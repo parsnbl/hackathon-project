@@ -3,7 +3,10 @@
   "name": "Hackathon Project",
   "version": "1.0.1",
   "description": "Our Description will go here.",
-  "permissions": ["activeTab", "webRequest", "webNavigation", "scripting"],
+  "permissions": ["webRequest", "webNavigation", "scripting","storage"],
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
   "background": { "service_worker": "scripts/background.js" },
   "content_scripts": [
     {

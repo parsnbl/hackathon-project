@@ -1,4 +1,4 @@
-const ANIMAL = 'cat';
+let ANIMAL = 'cat';
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request) {
@@ -10,6 +10,32 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area === 'sync' && changes.animal?.newValue) {
+    ANIMAL = changes.animal.newValue;
+  }
+});
+
+/*
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area === 'sync' && changes.options?.newValue) {
+    const debugMode = Boolean(changes.options.newValue.debug);
+    console.log('enable debug mode?', debugMode);
+    setDebugMode(debugMode);
+  }
+});
+*/
+
+/*
+chrome.storage.onChanged.addListener((changes, namespace) => {
+  for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
+    console.log(
+      `Storage key "${key}" in namespace "${namespace}" changed.`,
+      `Old value was "${oldValue}", new value is "${newValue}".`
+    );
+  }
+});
+*/
 
 function makeErrorPage(code) {
   const url =

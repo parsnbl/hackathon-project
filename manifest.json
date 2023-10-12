@@ -8,8 +8,7 @@
     "webRequest",
     "webNavigation",
     "scripting",
-    "storage",
-    "browserAction"
+    "storage"
   ],
   "background": { "service_worker": "scripts/background.js" },
   "content_scripts": [

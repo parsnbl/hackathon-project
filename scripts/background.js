@@ -18,3 +18,21 @@ chrome.webNavigation.onCompleted.addListener(async details => {
         console.log(response)
     }
 })
+
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area === 'local') {
+    chrome.storage.local.get('ANIMAL', result => {
+      if (result.ANIMAL) {
+        ANIMAL = result.ANIMAL;
+    
+        const icon =
+          ANIMAL === 'cat'
+            ? '../assets/catemoj-16.png'
+            : '../assets/dogemoj-16.png';
+        chrome.action.setIcon({path: icon });
+        console.log(icon);
+      }
+    });
+  }
+});
+

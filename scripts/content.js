@@ -1,5 +1,6 @@
 let ANIMAL = 'cat';
 
+/*
 chrome.storage.local.get('ANIMAL', result => {
   if (result.ANIMAL) {
     ANIMAL = result.ANIMAL;
@@ -8,11 +9,11 @@ chrome.storage.local.get('ANIMAL', result => {
       ANIMAL === 'cat'
         ? '../assets/catemoj-16.png'
         : '../assets/dogemoj-16.png';
-    chrome.action.setIcon({ path: icon });
+    chrome.action.setIcon({path: icon });
     console.log(icon);
   }
 });
-
+*/
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request) {
     const errorPage = makeErrorPage(request);

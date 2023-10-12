@@ -1,0 +1,19 @@
+{
+  "name": "hackathon-project",
+  "version": "1.0.0",
+  "description": "our description will go here",
+  "main": "service-worker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parsnbl/hackathon-project.git"
+  },
+  "author": "Evan Pearson <ejp1989@icloud.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parsnbl/hackathon-project/issues"
+  },
+  "homepage": "https://github.com/parsnbl/hackathon-project#readme"
+}

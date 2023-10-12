@@ -20,6 +20,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const html = document.querySelector('html');
     html.style.padding = '0px';
     document.body = errorPage;
+    const audio = new Audio(chrome.runtime.getURL('../assets/cat_sound.wav'));
+    audio.play();
     sendResponse({ message: `request recieved: ${request}` });
   }
 });
@@ -50,11 +52,11 @@ function makeErrorPage(code) {
   body.style.padding = '0px';
   body.style.height = '100vh';
 
-  const audio = document.createElement('audio');
-  audio.setAttribute('src', 'cat_sound.wav');
-  audio.setAttribute('autoplay', 'true');
-  audio.setAttribute('loop', 'true');
-  body.append(audio);
+  // const audio = document.createElement('audio');
+  // audio.setAttribute('src', chrome.runtime.getURL('cat_sound.wav'));
+  // audio.setAttribute('autoplay', 'true');
+  // audio.setAttribute('loop', 'true');
+  // body.append(audio);
 
   return body;
 }

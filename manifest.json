@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Hackathon Project",
+  "name": "Status Pets",
   "version": "1.0.1",
-  "description": "Our Description will go here.",
+  "description": "Replace common error pages with versions featuring your favorite animals.",
   "permissions": [
     "activeTab",
     "webRequest",
@@ -31,7 +31,7 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["cat_sound.wav"],
+      "resources": ["assets/cat_sound.wav", "assets/dog_bark.wav"],
       "matches": ["https://*/*", "http://*/*"]
     }
   ]

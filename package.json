@@ -1,7 +1,7 @@
 {
-  "name": "hackathon-project",
-  "version": "1.0.0",
-  "description": "our description will go here",
+  "name": "Status Pets",
+  "version": "1.0.1",
+  "description": "Replace common error pages with versions featuring your favorite animals.",
   "main": "service-worker.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

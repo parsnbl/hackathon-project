@@ -12,6 +12,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 chrome.storage.onChanged.addListener((changes, area) => {
   if (area === 'sync' && changes.animal?.newValue) {
+    console.log('oldAnimal: ', ANIMAL, 'newAnimal: ', changes.animalnewValue);
+    console.log('changes:', changes)
     ANIMAL = changes.animal.newValue;
   }
 });

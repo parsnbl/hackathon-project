@@ -3,5 +3,13 @@
   "name": "Hackathon Project",
   "version": "1.0.1",
   "default_locale": "en",
-  "description": "Our Description will go here."
+  "description": "Our Description will go here.",
+  "permissions": ["activeTab", "webNavigation"],
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": ["https://*/*", "http://*/*"]
+    }
+  ],
+  "host_permissions": ["https://*/*", "http://*/*"]
 }

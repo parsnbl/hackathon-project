@@ -1,43 +1,20 @@
 let ANIMAL = 'cat';
 
+chrome.storage.local.get('ANIMAL', result => {
+  if (result.ANIMAL) {
+    ANIMAL = result.ANIMAL;
+  }
+});
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request) {
     const errorPage = makeErrorPage(request);
-    const html = document.querySelector('html')
-    html.style.padding = "0px"
+    const html = document.querySelector('html');
+    html.style.padding = '0px';
     document.body = errorPage;
     sendResponse({ message: `request recieved: ${request}` });
   }
 });
-
-chrome.storage.onChanged.addListener((changes, area) => {
-  if (area === 'sync' && changes.animal?.newValue) {
-    console.log('oldAnimal: ', ANIMAL, 'newAnimal: ', changes.animalnewValue);
-    console.log('changes:', changes)
-    ANIMAL = changes.animal.newValue;
-  }
-});
-
-/*
-chrome.storage.onChanged.addListener((changes, area) => {
-  if (area === 'sync' && changes.options?.newValue) {
-    const debugMode = Boolean(changes.options.newValue.debug);
-    console.log('enable debug mode?', debugMode);
-    setDebugMode(debugMode);
-  }
-});
-*/
-
-/*
-chrome.storage.onChanged.addListener((changes, namespace) => {
-  for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
-    console.log(
-      `Storage key "${key}" in namespace "${namespace}" changed.`,
-      `Old value was "${oldValue}", new value is "${newValue}".`
-    );
-  }
-});
-*/
 
 function makeErrorPage(code) {
   const url =
@@ -49,7 +26,7 @@ function makeErrorPage(code) {
 
   const img = document.createElement('img');
   img.setAttribute('src', url);
-  img.style.height = '100%'
+  img.style.height = '100%';
 
   const frame = document.createElement('div');
   frame.classList.add('frame');

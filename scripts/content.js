@@ -1,28 +1,41 @@
 const ANIMAL = 'cat';
 
-chrome.webNavigation.onErrorOccured.addListener((details) => {
-  console.log(details);
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request) {
+    const errorPage = makeErrorPage(request);
+    const html = document.querySelector('html')
+    html.style.padding = "0px"
+    document.body = errorPage;
+    sendResponse({ message: `request recieved: ${request}` });
+  }
 });
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const code = 404
-//     const errorPage = makeErrorPage(code)
-//     document.body.appendChild(errorPage)
-// })
 
 function makeErrorPage(code) {
-  const imgURL =
-    ANIMAL === 'dog'
-      ? `https://http.dog/${code}.jpg`
-      : `https://http.cat/${code}`;
+  const url =
+    ANIMAL === 'cat'
+      ? `https://http.cat/${code}`
+      : `https://http.dog/${code}.jpg`;
+
+  const body = document.createElement('body');
 
   const img = document.createElement('img');
-  img.classList.add('animal-img');
-  img.setAttribute('src', imgURL);
+  img.setAttribute('src', url);
+  img.style.height = '100%'
 
   const frame = document.createElement('div');
   frame.classList.add('frame');
-  frame.appendChild(img);
 
-  return frame;
+  frame.append(img);
+  body.append(frame);
+
+  body.style.margin = '0px';
+  body.style.background = 'none';
+  body.style.backgroundColor = '#000000e6';
+  body.style.maxWidth = 'none';
+  body.style.maxHeight = 'none';
+  body.style.padding = '0px';
+  body.style.height = '100vh';
+
+  return body;
 }

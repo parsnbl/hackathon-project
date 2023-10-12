@@ -1,13 +1,22 @@
+html {
+  padding: 0px;
+}
+/*
 body {
   margin: 0px;
-  border: none;
-}
-
-.frame {
   height: 100vh;
   width: 100vw;
+  border: none;
+  padding: 0px;
+  max-width: max-content;
+  max-height: max-content;
+}
+*/
+.frame {
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: #000000e6;
 }

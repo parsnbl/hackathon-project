@@ -1,19 +1,11 @@
 let ANIMAL = 'cat';
 
-/*
 chrome.storage.local.get('ANIMAL', result => {
   if (result.ANIMAL) {
     ANIMAL = result.ANIMAL;
-
-    const icon =
-      ANIMAL === 'cat'
-        ? '../assets/catemoj-16.png'
-        : '../assets/dogemoj-16.png';
-    chrome.action.setIcon({path: icon });
-    console.log(icon);
   }
 });
-*/
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request) {
     const errorPage = makeErrorPage(request);
@@ -31,17 +23,37 @@ function makeErrorPage(code) {
     ANIMAL === 'cat'
       ? `https://http.cat/${code}`
       : `https://http.dog/${code}.jpg`;
+  const sound = ANIMAL === 'cat' ? 'cat_sound.wav' : 'dog_bark.wav';
 
   const body = document.createElement('body');
+
+  const audio = document.createElement('audio');
+  const audioSrc = chrome.runtime.getURL(sound);
+  audio.setAttribute('src', audioSrc);
+  body.append(audio);
 
   const img = document.createElement('img');
   img.setAttribute('src', url);
   img.style.height = '100%';
+  img.style.cursor = 'pointer';
+
+  img.addEventListener('click', () => {
+    audio.play();
+  });
 
   const frame = document.createElement('div');
   frame.classList.add('frame');
 
   frame.append(img);
+
+  // const playButton = document.createElement('button');
+  // playButton.innerText = 'Click to Cheer Up';
+  // playButton.addEventListener('click', () => {
+  //   audio.play();
+  // });
+  // playButton.classList.add('play-button');
+  // frame.append(playButton);
+
   body.append(frame);
 
   body.style.margin = '0px';
@@ -51,12 +63,6 @@ function makeErrorPage(code) {
   body.style.maxHeight = 'none';
   body.style.padding = '0px';
   body.style.height = '100vh';
-
-  // const audio = document.createElement('audio');
-  // audio.setAttribute('src', chrome.runtime.getURL('cat_sound.wav'));
-  // audio.setAttribute('autoplay', 'true');
-  // audio.setAttribute('loop', 'true');
-  // body.append(audio);
 
   return body;
 }

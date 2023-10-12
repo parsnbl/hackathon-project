@@ -1,17 +1,13 @@
 html {
   padding: 0px;
 }
-/*
+
 body {
-  margin: 0px;
-  height: 100vh;
-  width: 100vw;
-  border: none;
-  padding: 0px;
-  max-width: max-content;
-  max-height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-*/
+
 .frame {
   height: 100%;
   width: 100%;
@@ -20,3 +16,36 @@ body {
   align-items: center;
   background-color: #000000e6;
 }
+
+/* .play-button {
+  height: 100px;
+  width: 170px;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20pt;
+}
+
+.play-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.play-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+} */

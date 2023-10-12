@@ -31,7 +31,7 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["cat_sound.wav"],
+      "resources": ["cat_sound.wav", "dog_bark.wav"],
       "matches": ["https://*/*", "http://*/*"]
     }
   ]

@@ -1,15 +1,20 @@
-const ANIMAL = 'cat';
+let ANIMAL = 'cat';
+
+chrome.storage.local.get('ANIMAL', result => {
+  if (result.ANIMAL) {
+    ANIMAL = result.ANIMAL;
+  }
+});
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request) {
     const errorPage = makeErrorPage(request);
-    const html = document.querySelector('html')
-    html.style.padding = "0px"
+    const html = document.querySelector('html');
+    html.style.padding = '0px';
     document.body = errorPage;
     sendResponse({ message: `request recieved: ${request}` });
   }
 });
-
 
 function makeErrorPage(code) {
   const url =
@@ -21,7 +26,7 @@ function makeErrorPage(code) {
 
   const img = document.createElement('img');
   img.setAttribute('src', url);
-  img.style.height = '100%'
+  img.style.height = '100%';
 
   const frame = document.createElement('div');
   frame.classList.add('frame');

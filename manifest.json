@@ -3,7 +3,13 @@
   "name": "Hackathon Project",
   "version": "1.0.1",
   "description": "Our Description will go here.",
-  "permissions": ["activeTab", "webRequest", "webNavigation", "scripting"],
+  "permissions": [
+    "activeTab",
+    "webRequest",
+    "webNavigation",
+    "scripting",
+    "storage"
+  ],
   "background": { "service_worker": "scripts/background.js" },
   "content_scripts": [
     {
@@ -12,5 +18,9 @@
       "css": ["scripts/content.css"]
     }
   ],
-  "host_permissions": ["https://*/*", "http://*/*"]
+  "host_permissions": ["https://*/*", "http://*/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Dogs & Cats"
+  }
 }

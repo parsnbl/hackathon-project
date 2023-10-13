@@ -1,6 +1,6 @@
 {
   "name": "Status Pets",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Replace common error pages with versions featuring your favorite animals.",
   "main": "service-worker.js",
   "scripts": {

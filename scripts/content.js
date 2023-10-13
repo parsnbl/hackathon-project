@@ -27,7 +27,6 @@ function makeErrorPage(code) {
   const audioSrc = chrome.runtime.getURL(sound);
   audio.setAttribute('src', audioSrc);
   if (ANIMAL === 'cat') {
-    console.log('volume set')
     audio.volume = 0.2;
   }
   body.append(audio);

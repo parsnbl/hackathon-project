@@ -28,8 +28,8 @@
   ],
   "host_permissions": ["<all_urls>"],
   "action": {
-    "default_popup": "popup.html",
-    "default_title": "Dogs & Cats",
+    "default_popup": "popup/popup.html",
+    "default_title": "Status Pets",
     "default_icon": {
       "16": "assets/catemoj-16.png",
       "32": "assets/catemoj-32.png",

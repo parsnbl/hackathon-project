@@ -1,15 +1,15 @@
-document.querySelectorAll('input[name="animal"]').forEach((elem)=>{
-  elem.addEventListener('change', async function(event) {
-    await changeAnimalSetting();
+document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.querySelector('#slider');
+
+  chrome.storage.local.get('ANIMAL', result => {
+    if (result.ANIMAL === 'dog') {
+      slider.checked = true;
+    }
+  });
+
+  slider.addEventListener('change', () => {
+    const curANIMAL = slider.checked ? 'dog' : 'cat';
+
+    chrome.storage.local.set({ ANIMAL: curANIMAL });
   });
 });
-
-async function changeAnimalSetting() {
-  const currentAnimal = await chrome.storage.sync.get("animal");
-  if (currentAnimal === cat) {
-    chrome.storage.set({ animal: "dog" })
-  } else {
-    chrome.storage.set({ animal: "cat"})
-  }
-  
-}

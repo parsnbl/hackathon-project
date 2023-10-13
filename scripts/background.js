@@ -18,7 +18,7 @@ chrome.runtime.onInstalled.addListener(async () => {
 chrome.webRequest.onCompleted.addListener(
   async (details) => {
     if (details.type === 'main_frame' && details.statusCode > 400) {
-      console.log('Starting send message')  
+      //console.log('Starting send message')  
       cache["tabId"] = details.tabId;
       cache["details"] = details.statusCode
     }
@@ -28,7 +28,7 @@ chrome.webRequest.onCompleted.addListener(
 
 //when the navigation is finished, send to the outermost frame the cache, then empty it
 chrome.webNavigation.onCompleted.addListener(async details => {
-  console.log(details)
+  //console.log(details)
     if (cache["details"] && details.tabId === cache["tabId"] && details.frameType === 'outermost_frame') {
       try {
         const response = await chrome.tabs.sendMessage(cache["tabId"] ,cache["details"]);
@@ -52,7 +52,7 @@ chrome.storage.onChanged.addListener((changes, area) => {
             ? '../assets/catemoj-16.png'
             : '../assets/dogemoj-16.png';
         chrome.action.setIcon({path: icon });
-        console.log(icon);
+        //console.log(icon);
       }
     });
   }

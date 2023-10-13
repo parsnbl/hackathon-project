@@ -12,8 +12,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const html = document.querySelector('html');
     html.style.padding = '0px';
     document.body = errorPage;
+    /*
     const audio = new Audio(chrome.runtime.getURL('../assets/cat_sound.wav'));
     audio.play();
+    */
     sendResponse({ message: `request recieved: ${request}` });
   }
 });
@@ -23,10 +25,8 @@ function makeErrorPage(code) {
     ANIMAL === 'cat'
       ? `https://http.cat/${code}`
       : `https://http.dog/${code}.jpg`;
-  const sound = ANIMAL === 'cat' ? 'cat_sound.wav' : 'dog_bark.wav';
-
+  const sound = ANIMAL === 'cat' ? '../assets/cat_sound.wav' : './assets/dog_bark.wav';
   const body = document.createElement('body');
-
   const audio = document.createElement('audio');
   const audioSrc = chrome.runtime.getURL(sound);
   audio.setAttribute('src', audioSrc);
